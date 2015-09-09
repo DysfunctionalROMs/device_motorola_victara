@@ -1,0 +1,14 @@
+[
+  {
+    "remote":      "github",
+    "repository":  "CyanogenMod/android_kernel_motorola_msm8974",
+    "target_path": "kernel/motorola/victara",
+    "branch":      "cm-12.1"
+  },
+  {
+    "remote":      "github",
+    "repository":  "TheMuppets/proprietary_vendor_motorola",
+    "target_path": "vendor/motorola",
+    "branch":      "cm-12.1"
+  }
+]
