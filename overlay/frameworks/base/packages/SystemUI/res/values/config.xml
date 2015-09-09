@@ -20,6 +20,7 @@
 <resources>
     <!-- Doze: does this device support STATE_DOZE and STATE_DOZE_SUSPEND?  -->
     <!-- <bool name="doze_display_state_supported">true</bool> -->
+    <!-- <bool name="doze_pulse_on_pick_up">true</bool> -->
 
     <!-- Doze: when to pulse after a buzzworthy notification arrives -->
     <string name="doze_pulse_schedule" translatable="false">1s,5s,15s,45s,180s</string>
