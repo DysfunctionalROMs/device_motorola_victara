@@ -2,7 +2,7 @@
   {
     "remote":      "github",
     "repository":  "CyanogenMod/android_kernel_motorola_msm8974",
-    "target_path": "kernel/motorola/victara",
+    "target_path": "kernel/motorola/8974",
     "branch":      "cm-12.1"
   },
   {
