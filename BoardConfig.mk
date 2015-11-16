@@ -34,17 +34,18 @@ BOARD_USES_QCOM_HARDWARE := true
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 TARGET_NO_BOOTLOADER := true
 
+USE_CLANG_PLATFORM_BUILD := true
+
 # Architecture
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := krait
-TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := device/motorola/victara/mkbootimg.mk
-BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 vmalloc=400M utags.blkdev=/dev/block/platform/msm_sdcc.1/by-name/utags androidboot.bootdevice=msm_sdcc.1
+BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 vmalloc=400M
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -60,6 +61,7 @@ AUDIO_FEATURE_ENABLED_USBAUDIO := true
 BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_ENABLED_FLUENCE := true
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
+USE_CUSTOM_AUDIO_POLICY := 1
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
@@ -69,6 +71,7 @@ BLUETOOTH_HCI_USE_MCT := true
 QCOM_BT_USE_SMD_TTY := true
 
 # Camera
+COMMON_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Display
@@ -76,6 +79,7 @@ TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
 USE_OPENGL_RENDERER := true
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+TARGET_USE_COMPAT_GRALLOC_PERFORM := true
 
 # Shader cache config options
 # Maximum size of the  GLES Shaders that can be cached for reuse.
@@ -102,9 +106,6 @@ TARGET_NR_SVC_SUPP_GIDS := 32
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-# Motorola
-TARGET_USES_MOTOROLA_LOG := true
-
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -124,6 +125,7 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
 BOARD_SUPPRESS_EMMC_WIPE := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
+TARGET_NOT_USE_GZIP_RECOVERY_RAMDISK := true
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -136,7 +138,7 @@ BOARD_SEPOLICY_DIRS += device/motorola/victara/sepolicy
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_victara
-TARGET_LIBINIT_DEFINES_FILE := device/motorola/victara/init/init_victara.c
+TARGET_LIBINIT_DEFINES_FILE := device/motorola/victara/init/init_victara.cpp
 
 # Vold
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true

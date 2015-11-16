@@ -37,6 +37,9 @@ on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 
+    # Symbols required for motorola blobs
+    export LD_PRELOAD /system/lib/libmoto.so:/system/lib/libboringssl-compat.so
+
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
@@ -118,6 +121,8 @@ on boot
     setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
     setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
     setprop net.tcp.buffersize.evdo    4094,87380,262144,4096,16384,262144
+
+    trigger enable-low-power
 
 # Define TCP delayed ack settings for WiFi & LTE
     setprop net.tcp.delack.default     1
@@ -599,7 +604,7 @@ service qcom-sh /system/bin/sh /init.qcom.sh
     user root
     oneshot
 
-on property:sys.boot_completed=1
+on enable-low-power
     write /sys/module/lpm_levels/enable_low_power/l2 4
     write /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu1/power_collapse/suspend_enabled 1
@@ -666,8 +671,8 @@ on property:sys.boot_completed=1
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load
     chown system system /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor
-    chown system system /dev/cpuctl/apps/cpu.notify_on_migrate
-    chmod 0660 /dev/cpuctl/apps/cpu.notify_on_migrate
+    chown system system /dev/cpuctl/cpu.notify_on_migrate
+    chmod 0660 /dev/cpuctl/cpu.notify_on_migrate
     chown system system /sys/module/cpu_boost/parameters/boost_ms
     chmod 0660 /sys/module/cpu_boost/parameters/boost_ms
     chown system system /sys/module/cpu_boost/parameters/sync_threshold
@@ -685,7 +690,7 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 100000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 30000
-    write /dev/cpuctl/apps/cpu.notify_on_migrate 1
+    write /dev/cpuctl/cpu.notify_on_migrate 1
 
     # CPU Boost driver
 
@@ -698,7 +703,6 @@ on property:sys.boot_completed=1
 
     setprop ro.qualcomm.perf.cores_online 2
     rm /data/system/default_values
-    start mpdecision
 
 service atfwd /system/bin/ATFWD-daemon
     class late_start
