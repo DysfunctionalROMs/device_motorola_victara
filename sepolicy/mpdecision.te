@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+allow mpdecision system_data_file:dir w_dir_perms;
+type_transition mpdecision system_data_file:file mpctl_data_file;
+
+>>>>>>> 45d9353... victara: sepolicy: Address denials during boot
 allow mpdecision self:capability sys_nice;
 
 allow mpdecision socket_device:dir w_dir_perms;
