@@ -1,11 +1,8 @@
 type adspd_data_file, file_type, data_file_type;
 type battery_data_file, file_type, data_file_type;
 type camera_dump_data_file, file_type, data_file_type;
-<<<<<<< HEAD
-=======
 type chargeonly_data_file, file_type, data_file_type;
 type cutback_data_file, file_type, data_file_type;
->>>>>>> 3f912c7... victara: fix offmode charging
 type fsg_file, file_type, data_file_type;
 type pds_file, file_type;
 type sysfs_adspd, sysfs_type, fs_type;
