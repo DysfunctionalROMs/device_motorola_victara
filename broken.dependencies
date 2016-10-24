@@ -7,9 +7,9 @@
   },
   {
     "remote":      "github",
-    "repository":  "TheMuppets/proprietary_vendor_motorola",
+    "repository":  "oraixearl/proprietary_vendor_motorola",
     "target_path": "vendor/motorola",
-    "branch":      "cm-14.0"
+    "branch":      "n7.0"
   },
   {
     "remote":      "github",
