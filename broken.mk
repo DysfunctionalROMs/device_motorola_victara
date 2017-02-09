@@ -3,9 +3,6 @@ $(call inherit-product, device/motorola/victara/full_victara.mk)
 # Inherit some common Broken stuff.
 $(call inherit-product, vendor/broken/config/common_full_phone.mk)
 
-# Enhanced NFC
-$(call inherit-product, vendor/broken/config/nfc_enhanced.mk)
-
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
