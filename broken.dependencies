@@ -1,15 +1,15 @@
 [
   {
     "remote":      "github",
-    "repository":  "oraixearl/nightmare_kernel",
+    "repository":  "CyanogenMod/android_kernel_motorola_msm8974",
     "target_path": "kernel/motorola/msm8974",
-    "branch":      "n7.0"
+    "branch":      "cm-14.1"
   },
   {
     "remote":      "github",
-    "repository":  "oraixearl/proprietary_vendor_motorola",
+    "repository":  "TheMuppets/proprietary_vendor_motorola",
     "target_path": "vendor/motorola",
-    "branch":      "n7.0"
+    "branch":      "cm-14.1"
   },
   {
     "remote":      "github",
